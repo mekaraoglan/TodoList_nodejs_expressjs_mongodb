@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<%- include('../partial/head') %>
+
+</head>
+
+<body>
+
+    <%- include('../partial/navbar') %>
+    
+    <section class="hero d-flex align-items-center justify-content-center text-center text-white" style="height: 65vh; background-color: #e5e5e5;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-7">
+              <% if (user) { %>
+                <div class="slide">
+                  <h1 class="display-5 fw-bold mb-4 bg-success shadow p-2">Görev listene ulaşmak için</h1>
+                  <a href="/task" class="btn px-4 py-2 fs-6 shadow" style="background-color: #7EA5D9;">Görev Listem</a>
+                </div>
+              <% } else { %>
+                <div class="slide">
+                  <h1 class="display-5 fw-bold mb-4 bg-success shadow p-2">Görev listesi oluşturmak için</h1>
+                  <a href="/auth/login" class="btn px-4 py-2 fs-6 shadow" style="background-color: #7EA5D9;">Giriş Yap</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="info py-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <h2 class="fw-bold mb-4 text-center">Uygulamamız Hakkında</h2>
+              <p class="text-muted text-center">
+                Bu uygulama, günlük işlerinizi düzenlemenize ve yönetmenize yardımcı olur. Görevlerinizi kolayca oluşturabilir, düzenleyebilir ve tamamlayabilirsiniz. Hayatınızı daha düzenli hale getirmek için hemen listelerinizi oluşturun!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <%- include('../partial/footer') %>
+
+</body>
+</html>

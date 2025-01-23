@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <%- include('../partial/head') %>
+
+</head>
+
+<body>
+
+    <%- include('../partial/navbar') %>
+
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="container mt-5">
+                    <div class="row">
+
+                        <%- include('../partial/user-account-menu') %>
+
+                            <div class="col-md-5 mt-5">
+                                <h4>Kişisel Bilgilerimi Düzenle</h4>
+                                <form action="/profile-edit" method="POST">
+                                    <div class="mb-3">
+                                        <label for="firstName" class="fw-bold">Ad:</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-control"
+                                            value="<%= user.userFirstName %>" minlength="2" maxlength="50" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastName" class="fw-bold">Soyad:</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-control"
+                                            value="<%= user.userLastName %>" minlength="2" maxlength="50" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="fw-bold">Email:</label>
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            value="<%= user.userEmail %>" maxlength="100" required>
+                                    </div>
+                                    <% if (typeof message !=='undefined' && message) { %>
+                                        <div class="alert alert-<%= message.type %> alert-dismissible">
+                                            <%= message.content %>
+                                        </div>
+                                        <% } %>
+                                            <button type="submit" class="btn btn-success">Kaydet</button>
+                                            <a href="/account" class="btn btn-secondary">Geri</a>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+            <footer>
+                <%- include('../partial/footer') %>
+            </footer>
+        </div>
+
+</body>
+
+</html>

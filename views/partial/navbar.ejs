@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #7EA5D9;">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <h3 class="mb-0" style="font-weight: bold; color: #393939;">TodoList</h3>
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/task" aria-current="page" style="font-weight: bold;">Görev Listem</a>
+        </li>
+      </ul>
+    </div>
+
+    <% if (user) { %>
+      <div class="d-flex ms-auto align-items-center">
+        <div class="dropdown">
+          <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color:#393939">
+            <strong><%- user.userFirstName %></strong>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="/account">Hesabım</a></li>
+            <li><a class="dropdown-item" href="/task">Görev Listem</a></li>
+            <li><a style="color:red;" class="dropdown-item" href="/auth/logout">Çıkış Yap</a></li>
+          </ul>
+        </div>
+      </div>
+    <% } else { %>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login" style="font-weight: bold;">Giriş Yap</a>
+        </li>
+      </ul>
+    <% } %>
+  </div>
+</nav>

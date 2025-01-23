@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partial/head') %>
+        <style>
+
+        </style>
+</head>
+
+<body>
+
+    <%- include('../partial/navbar') %>
+
+    <div class="page-container">
+        <div class="content-wrap">
+        <div class="container d-flex justify-content-center align-items-center"
+            style="min-height: 100vh; margin-top: -140px">
+            <div class="card" style="width: 100%; max-width: 600px;">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Görevi Düzenle</h2>
+                    <form action="/task-edit/<%= task._id %>" method="POST">
+                        <div class="form-group">
+                            <label for="task-title">Başlık:</label>
+                            <input type="text" id="task-title" name="title" class="form-control"
+                                value="<%= task.title %>" maxlength="50" required>
+                            <span class="task-length" id="task-title-length">0/50</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Açıklama:</label>
+                            <textarea id="task-description" name="description" class="form-control" rows="5"
+                            maxlength="1500" required><%= task.description %></textarea>
+                            <span class="task-length" id="task-description-length">0/1500</span>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" style="margin-top: 10px">Görevi Güncelle</button>
+                        <a href="/task" class="btn btn-danger btn-block" style="margin-top: 10px">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>>
+    </div>
+    <footer>
+        <%- include('../partial/footer') %>
+    </footer>
+  </div>
+
+        
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+
+                    taskInputLenght();
+                });
+
+                function taskInputLenght() {
+                    const taskTitle = document.getElementById("task-title");
+                    const taskTitleLength = document.getElementById("task-title-length");
+                    const taskDescription = document.getElementById("task-description");
+                    const taskDescriptionLength = document.getElementById("task-description-length");
+
+                    if (taskTitle) {
+                        taskTitleLength.textContent = `${taskTitle.value.length}/50`;
+                    }
+                    if (taskDescription) {
+                        taskDescriptionLength.textContent = `${taskDescription.value.length}/1500`;
+                    }
+
+
+                    taskTitle.addEventListener("input", () => {
+                        const length = taskTitle.value.length;
+                        taskTitleLength.textContent = `${length}/50`;
+                    });
+
+                    taskDescription.addEventListener("input", () => {
+                        const length = taskDescription.value.length;
+                        taskDescriptionLength.textContent = `${length}/1500`;
+                    });
+                };
+            </script>
+
+</body>
+
+</html>
