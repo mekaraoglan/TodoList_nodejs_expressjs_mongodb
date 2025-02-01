@@ -100,7 +100,7 @@ exports.post_task_edit = async (req, res) => {
         task.title = req.body.title;
         task.description = req.body.description;
 
-        task.save();
+        await task.save();
         res.redirect("/task")
     } catch (err) {
         console.log(err);
